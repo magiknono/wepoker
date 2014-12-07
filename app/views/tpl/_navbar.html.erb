@@ -18,15 +18,56 @@
 
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><i class="fa fa-envelope-o"></i> Contact</a></li>
+
+
+        <% if user_signed_in? %>
+
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="http://placehold.it/30x30" id="profile-pic" alt="">Follow-us <span class="caret"></span></a>
+          <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
+          <% if current_user.provider %>
+          <%= image_tag current_user.picture, class: "img img-circle" %>
+          <% else %>
+          <%= image_tag "http://placehold.it/30x30", id: "profile-pic" %>
+
+
+
+      <% end %>
+            <%= current_user.email %> <span class="caret"></span>
+          <% end %>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="https://www.facebook.com/lewagonformation"><i class="fa fa-facebook-square"></i> Facebook</a></li>
-            <li><a href="https://twitter.com/lewagonparis"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+            <li>
+
+              <%= link_to edit_user_registration_path(current_user) do %>
+              <i class="fa fa-user"></i> Edit Profile
+              <% end %>
+
+            </li>
+             <li>
+          <!--  -->
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: 'delete' do %>
+                <i class="fa fa-sign-out"></i> Sign out
+              <% end %>
+            </li>
           </ul>
         </li>
-        <li><a href="#" class="btn btn-primary" id="nav-btn">Publish an announce</a></li>
+        <% else %>
+          <li>
+            <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), class: "btn-auth btn-facebook" %>
+          </li>
+          <li>
+           <%= link_to 'Sign up', new_user_registration_path %>
+          </li>
+          <li>
+           <%= link_to 'Sign in', new_user_session_path %>
+           </li>
+        <% end %>
+
+        <li>
+
+
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
