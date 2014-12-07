@@ -11,9 +11,11 @@
 </head>
 <body>
 <%= render 'tpl/navbar' %>
- <p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= render 'layouts/sessions' %>
+
+<div class="notices">
+<%= render 'tpl/notices' %>
+</div>
+<div class="vertical-spacer-top"></div>
 
 <%= yield %>
 

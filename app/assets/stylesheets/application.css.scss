@@ -4,3 +4,14 @@
 @import "font-awesome";
 
 @import "navbar";
+
+.vertical-spacer-top {
+  margin-top:70px;
+}
+.notices {
+  position: absolute;
+  left: 50%;
+  width: 400px;
+  margin-left: -200px;
+  z-index: 2;
+}
