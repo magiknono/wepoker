@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208160115) do
+ActiveRecord::Schema.define(version: 20141208161643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "poker_games", force: true do |t|
+    t.string   "gametype"
+    t.date     "date"
+    t.time     "hour"
+    t.string   "description"
+    t.integer  "nb_players_required"
+    t.datetime "cancelled_at"
+    t.integer  "user_id"
+  end
+
+  add_index "poker_games", ["user_id"], name: "index_poker_games_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
