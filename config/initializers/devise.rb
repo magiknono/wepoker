@@ -258,6 +258,6 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   #fb devise conf
-  config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"], scope: 'email'
+  config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"], scope: 'email', image_size: 'large', secure_image_url: true, client_options: {ssl: {verify: false}}
 
 end
