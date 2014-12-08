@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208161643) do
+ActiveRecord::Schema.define(version: 20141208162327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "coordinates", force: true do |t|
+    t.string  "street_address"
+    t.string  "zipcode_address"
+    t.string  "city_address"
+    t.string  "lat"
+    t.string  "lng"
+    t.integer "poker_game_id"
+  end
+
+  add_index "coordinates", ["poker_game_id"], name: "index_coordinates_on_poker_game_id", using: :btree
 
   create_table "poker_games", force: true do |t|
     t.string   "gametype"
