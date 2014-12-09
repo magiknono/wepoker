@@ -22,20 +22,19 @@
 
         <% if user_signed_in? %>
 
-        <li class="dropdown">
-          <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
-          <% if current_user.provider %>
-          <%= image_tag current_user.picture(:navbar), class: "img img-circle" %>
+          <li class="dropdown">
+            <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
 
-          <% else %>
-          <%= image_tag "http://placehold.it/30x30", id: "profile-pic" %>
+              <% if current_user.provider %>
+              <%= image_tag current_user.picture(:navbar), class: "img img-circle" %>
+              <% else %>
+              <%= image_tag "http://placehold.it/30x30", id: "profile-pic" %>
+              <% end %>
 
+                <%= current_user.email %> <span class="caret"></span>
 
+            <% end %>
 
-      <% end %>
-            <%= current_user.email %> <span class="caret"></span>
-
-          <% end %>
           <ul class="dropdown-menu" role="menu">
             <li>
 
@@ -44,7 +43,7 @@
               <% end %>
 
             </li>
-             <li>
+
           <!--  -->
             <li>
               <%= link_to new_poker_game_path do %>
@@ -60,23 +59,25 @@
           </ul>
         </li>
         <% else %>
-          <li>
-            <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), class: "btn-auth btn-facebook" %>
-          </li>
-          <li>
-           <%= link_to 'Sign up', new_user_registration_path %>
-          </li>
-          <li>
-           <%= link_to 'Sign in', new_user_session_path %>
-           </li>
+            <li>
+              <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), class: "btn-auth btn-facebook" %>
+            </li>
+            <li>
+             <%= link_to 'Sign up', new_user_registration_path %>
+            </li>
+            <li>
+             <%= link_to 'Sign in', new_user_session_path %>
+             </li>
         <% end %>
         <% if user_signed_in? %>
         <li>
           <%= link_to edit_user_registration_path(current_user) do %>
           <i class="fa fa-cog" ></i>
+
           <% end %>
+          </li>
         <% end %>
-        </li>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
