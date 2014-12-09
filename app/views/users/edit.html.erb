@@ -6,7 +6,7 @@
     <%= simple_form_for(@user, html: { multipart: true }) do |f| %>
       <%= f.input :name %>
       <%= f.input :phone %>
-      <%= f.input :birthday, as: :date,
+      <%= f.input :birthday, as: :date_picker,
       order: [:day,:month, :year] %>
 
       <%= f.button :submit, class: "btn btn-primary"%>
