@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208165432) do
+ActiveRecord::Schema.define(version: 20141210135138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20141208165432) do
     t.string  "street_address"
     t.string  "zipcode_address"
     t.string  "city_address"
-    t.string  "lat"
-    t.string  "lng"
     t.integer "poker_game_id"
+    t.float   "lat"
+    t.float   "lng"
   end
 
   add_index "coordinates", ["poker_game_id"], name: "index_coordinates_on_poker_game_id", using: :btree
