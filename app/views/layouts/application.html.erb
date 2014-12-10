@@ -10,7 +10,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <%= render 'tpl/navbar' %>
+<%= render 'tpl/fb_sdk' %>
 
 <div class="notices">
 <%= render 'tpl/notices' %>
@@ -22,6 +24,5 @@
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 
-</script>
 </body>
 </html>
