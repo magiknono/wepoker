@@ -1,0 +1,20 @@
+      <%= content_for(:sharePoker) do %>
+      <%= javascript_tag do %>
+      document.getElementById('sharePoker').onclick = function(){
+ FB.ui(
+  {
+    display: 'popup',
+    method: 'share',
+    href: 'http://localhost:3000/poker_games/<%= params[:id] %>/',
+  },
+  function(response) {
+    if (response && !response.error_code) {
+      alert('Publication réussi');
+    } else {
+      alert('Erreur lors du post');
+    }
+  }
+);
+}
+  <% end %>
+  <% end %>

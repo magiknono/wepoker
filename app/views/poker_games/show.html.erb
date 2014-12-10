@@ -19,7 +19,13 @@
       <%= @pokergame.coordinate.lat %>
       <br />
       <%= @pokergame.coordinate.lng %>
+      <br />
+      <button class="btn btn-primary" id="sharePoker">Partager sur Facebook</button>
+
 
     </div>
   </div>
 </div>
+<%= render 'tpl/fb_share_poker' %>
+
+<%= yield(:sharePoker) %>
