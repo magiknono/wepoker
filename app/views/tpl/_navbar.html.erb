@@ -43,8 +43,15 @@
               <% end %>
 
             </li>
+              <% if PokerGame.exists?(user_id: current_user.id) %>
+            <li>
 
-          <!--  -->
+              <%= link_to my_poker_games_path do %>
+              <i class="fa fa-user"></i> My PokerGames
+              <% end %>
+
+            </li>
+              <% end %>
             <li>
               <%= link_to new_poker_game_path do %>
               <i class="fa fa-plus-square"></i> Create a Poker game NOW!

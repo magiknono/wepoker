@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+
+      <h3>your pokergames</h3>
+<% @my_poker_games.each do |mypgames| %>
+<div class="user-form-devise">
+  <%= link_to(poker_game_path(mypgames.id)) do %>
+  <h2><%= mypgames.description %></h2>
+  <% end %>
+   le <%= mypgames.date.strftime("%m/%d/%Y") %> à <%= mypgames.hour.strftime("%H:%M") %>
+  <p><%= mypgames.gametype %></p>
+  </div>
+<% end %>
+
+  </div>
+</div>

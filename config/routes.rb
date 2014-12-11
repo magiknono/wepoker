@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get 'confirm_add'
 
   end
-
+  get 'my_poker_games', to: 'poker_games#my_poker_games'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
