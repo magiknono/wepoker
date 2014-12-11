@@ -8,8 +8,13 @@
       <%= f.input :phone %>
       <%= f.input :birthday, as: :date_picker,
       order: [:day,:month, :year] %>
-
+      <% if current_user.provider != "facebook" %>
+      <h5><strong>Upload Your Picture profile</strong></h5>
+      <%= f.file_field :picture %>
+      <% end %>
+      <br />
       <%= f.button :submit, class: "btn btn-primary"%>
+
     <% end %>
 <br />
 </div>

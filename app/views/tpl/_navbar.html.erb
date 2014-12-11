@@ -27,6 +27,8 @@
 
               <% if current_user.provider %>
               <%= image_tag current_user.picture(:navbar), class: "img img-circle" %>
+              <% elsif current_user.picture.exists? %>
+              <%= image_tag current_user.picture(:navbar), class: "img img-circle" %>
               <% else %>
               <%= image_tag "http://placehold.it/30x30", id: "profile-pic" %>
               <% end %>
