@@ -23,6 +23,11 @@ class PokerGamesController < ApplicationController
     @my_poker_games = current_user.poker_games.all
   end
 
+  def destroy
+    PokerGame.find(params[:id]).destroy
+    redirect_to my_poker_games_path
+  end
+
    def pokergame_params
     params.require(:poker_game).permit(:date, :hour, :description,:nb_players_required, :gametype, :street_address, :zipcode_address, :city_address,:lat,:lng)
   end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'about', to: 'home#about'
   resources :users, only: [:edit, :update, :show]
-  resources :poker_games, only: [:new,:create]
+  resources :poker_games, only: [:new,:create,:destroy]
   resources :poker_games, only: [:show] do
 
       get 'confirm_add'
