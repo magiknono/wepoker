@@ -7,7 +7,7 @@
   <%= link_to(poker_game_path(mypgames.id)) do %>
   <h2><%= mypgames.description %></h2>
   <% end %>
-   le <%= mypgames.date.strftime("%m/%d/%Y") %> à <%= mypgames.hour.strftime("%H:%M") %>
+   le <%= mypgames.date.strftime("%d/%m/%Y") %> à <%= mypgames.hour.strftime("%H:%M") %>
   <p><%= mypgames.gametype %></p>
   </div>
 <% end %>

@@ -5,4 +5,4 @@ fr:
     weekstart: 0               # the week starts on Sunday (this is the default, can be ommited)
   timepicker:
     dformat: '%R'              # display format of the time (this is the default, can be ommited)
-    pformat: 'HH:mm'           # picking format of the time (this is the default, can be ommited)
+    pformat: 'HH:mm'                       # picking format of the time (this is the default, can be ommited)
