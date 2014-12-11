@@ -1,5 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="user-form-devise">
+      <ul class="list-inline">
+        <li>Game à <%= @pokergame.city_address %></li>
+        <li>Game type : <%= @pokergame.gametype %></li>
+      </ul>
+      </div>
+    </div>
+  </div>
 <div class="row">
-  <div class="col-md-4 col-md-offset-4">
+  <div class="col-md-6 col-md-offset-1">
     <div class="user-form-devise">
 
       <%= @pokergame.description %>
@@ -26,5 +37,12 @@
 
     </div>
   </div>
+      <div class="col-md-4 ">
+        <div class="user-form-devise">
+          <h3>Organisé par <%= @pokergame.user.name %></h3>
+        <%=  image_tag @pokergame.user.picture(:medium) %>
+      </div>
+      </div>
+</div>
 </div>
 
