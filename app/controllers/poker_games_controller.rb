@@ -19,6 +19,10 @@ class PokerGamesController < ApplicationController
     @pokergame = PokerGame.find(params[:poker_game_id])
   end
 
+  def my_poker_games
+    @my_poker_games = current_user.poker_games.all
+  end
+
    def pokergame_params
     params.require(:poker_game).permit(:date, :hour, :description,:nb_players_required, :gametype, :street_address, :zipcode_address, :city_address,:lat,:lng)
   end
