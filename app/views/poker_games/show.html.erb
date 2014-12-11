@@ -4,9 +4,9 @@
 
       <%= @pokergame.description %>
       <br />
-      <%= @pokergame.date %>
+      <%= @pokergame.date.strftime("%d/%m/%Y") %>
       <br />
-      <%= @pokergame.hour %>
+      <%= @pokergame.hour.strftime("%H:%M") %>
       <br />
       <%= @pokergame.gametype %>
       <br />
@@ -22,12 +22,10 @@
       <br />
       <%= @pokergame.lng %>
       <br />
-      <button class="btn btn-primary" id="sharePoker">Partager sur Facebook</button>
+
 
 
     </div>
   </div>
 </div>
-<%= render 'tpl/fb_share_poker' %>
 
-<%= yield(:sharePoker) %>

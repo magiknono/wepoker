@@ -6,9 +6,9 @@
 
       <%= @pokergame.description %>
       <br />
-      <%= @pokergame.date %>
+      <%= @pokergame.date.strftime("%d/%m/%Y") %>
       <br />
-      <%= @pokergame.hour %>
+      <%= @pokergame.hour.strftime("%H:%M") %>
       <br />
       <%= @pokergame.gametype %>
       <br />
