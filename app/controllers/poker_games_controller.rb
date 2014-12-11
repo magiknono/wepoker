@@ -4,7 +4,7 @@ class PokerGamesController < ApplicationController
   end
   def new
     @pokergame = PokerGame.new
-    @pokergame.build_coordinate
+
 
   end
   def create
@@ -20,6 +20,6 @@ class PokerGamesController < ApplicationController
   end
 
    def pokergame_params
-    params.require(:poker_game).permit(:date, :hour, :description,:nb_players_required, :gametype, coordinate_attributes: [:street_address, :zipcode_address, :city_address,:lat,:lng])
+    params.require(:poker_game).permit(:date, :hour, :description,:nb_players_required, :gametype, :street_address, :zipcode_address, :city_address,:lat,:lng)
   end
 end

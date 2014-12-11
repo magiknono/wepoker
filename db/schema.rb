@@ -11,21 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210135138) do
+ActiveRecord::Schema.define(version: 20141211101807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "coordinates", force: true do |t|
-    t.string  "street_address"
-    t.string  "zipcode_address"
-    t.string  "city_address"
-    t.integer "poker_game_id"
-    t.float   "lat"
-    t.float   "lng"
-  end
-
-  add_index "coordinates", ["poker_game_id"], name: "index_coordinates_on_poker_game_id", using: :btree
 
   create_table "game_participations", force: true do |t|
     t.boolean  "is_accepted"
@@ -54,6 +43,11 @@ ActiveRecord::Schema.define(version: 20141210135138) do
     t.integer  "nb_players_required"
     t.datetime "cancelled_at"
     t.integer  "user_id"
+    t.string   "street_address"
+    t.string   "zipcode_address"
+    t.string   "city_address"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   add_index "poker_games", ["user_id"], name: "index_poker_games_on_user_id", using: :btree

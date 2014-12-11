@@ -21,12 +21,12 @@
             <option value="cash-game"/>cashgame</option>
 
         </select> -->
-        <%= f.simple_fields_for :coordinate do |p| %>
 
-          <%= p.input :street_address  %>
-          <%= p.input :zipcode_address %>
-          <%= p.input :city_address %>
-        <% end %>
+
+          <%= f.input :street_address  %>
+          <%= f.input :zipcode_address %>
+          <%= f.input :city_address %>
+
 
 
       <%= f.button :submit, "Submit" %>
