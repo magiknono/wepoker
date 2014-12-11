@@ -9,10 +9,14 @@ class PokerGamesController < ApplicationController
   end
   def create
     if @pokergame = current_user.poker_games.create(pokergame_params)
-      redirect_to poker_game_path(@pokergame)
+      redirect_to poker_game_confirm_add_path(@pokergame)
     else
       render :new, alert: @pokergame.errors.full_messages.join('<br />')
     end
+  end
+
+  def confirm_add
+    @pokergame = PokerGame.find(params[:poker_game_id])
   end
 
    def pokergame_params
