@@ -40,10 +40,10 @@
   </div>
       <div class="col-md-4 ">
         <div class="user-form-devise">
-          <%= link_to user_path(@pokergame.user) do %>
-          <h3>Organisé par <%= @pokergame.user.name %></h3>
+          Organisé par<%= link_to user_path(@pokergame.user) do %>
+          <h3> <%= @pokergame.user.name %></h3>
           <% end %>
-        <%=  image_tag @pokergame.user.picture(:medium) %>
+        <%=  image_tag @pokergame.user.picture(:medium) if @pokergame.user.picture.exists? %>
       </div>
       </div>
 </div>
