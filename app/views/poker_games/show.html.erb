@@ -33,8 +33,9 @@
       <br />
       <%= @pokergame.lng %>
       <br />
+      <% if @pokergame.user == current_user %>
      <%= link_to("Cancel", poker_game_path , method:  :delete, class: "btn btn-danger") %>
-
+      <% end %>
     </div>
   </div>
       <div class="col-md-4 ">
