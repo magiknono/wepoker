@@ -1,6 +1,6 @@
 class PokerGamesController < ApplicationController
   def index
-    @pokergames = PokerGame.all.paginate(page: params[:page], per_page: 4)
+    @pokergames = PokerGame.all.paginate(page: params[:page], per_page: 2)
 
   end
 
