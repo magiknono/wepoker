@@ -1,4 +1,8 @@
 class PokerGamesController < ApplicationController
+  def index
+    @pokergames = PokerGame.all
+  end
+
   def show
     @pokergame = PokerGame.find(params[:id])
   end
