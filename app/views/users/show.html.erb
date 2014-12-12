@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
     <div class="user-form-devise">
-<%=  image_tag current_user.picture(:medium) %>
+<%=  image_tag @user.picture(:medium) %>
 <br />
 <%= @user.name %>
 <br />
 <%= @user.phone %>
 <br />
-<%= @user.birthday.strftime("%d/%m/%Y") %>
+<%= @user.birthday.strftime("%d/%m/%Y") if @user.birthday.present? %>
     </div>
   </div>
 </div>
