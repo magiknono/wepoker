@@ -3,6 +3,9 @@
     <div class="user-form-devise">
     <h1><i class="fa fa-user"></i> Edit your profile</h1>
 
+    <% if (@user.birthday || @user.phone || @user.phone) == nil %>
+      <p><strong>You must  complete your profile before creating a new poker game</strong></p>
+    <% end %>
     <%= simple_form_for(@user, html: { multipart: true }) do |f| %>
       <%= f.input :name %>
       <%= f.input :phone %>

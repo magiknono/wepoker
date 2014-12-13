@@ -1,4 +1,5 @@
 class PokerGamesController < ApplicationController
+  before_action :need_profile_completed, only: [:new]
   def index
     @pokergames = PokerGame.all.paginate(page: params[:page], per_page: 2)
 
@@ -35,5 +36,14 @@ class PokerGamesController < ApplicationController
 
    def pokergame_params
     params.require(:poker_game).permit(:date, :hour, :description,:nb_players_required, :gametype, :street_address, :zipcode_address, :city_address,:lat,:lng)
+  end
+
+  private
+
+  def need_profile_completed
+    @user = User.find(current_user.id)
+     if (@user.birthday || @user.phone || @user.phone) == nil
+      redirect_to edit_user_path(current_user.id)
+     end
   end
 end
