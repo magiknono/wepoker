@@ -39,7 +39,9 @@ fr:
       confirmation_instructions: "Instructions de confirmation"
       reset_password_instructions: "Instructions pour changer le mot de passe"
       unlock_instructions: "Instructions pour déverrouiller le compte"
-
+    omniauth_callbacks:
+      failure: "Nous n'avons pas pu vous authentifié à partir de %{kind} parce que \"%{reason}\"."
+      success: "Authentification réussi à partir de votre compte %{kind} ."
     ##########################################################################################################
     # For generated views: By "rails generate devise_views".
     #                      Assuming to use I18n "Lazy" lookup, except for the ones under "common" namespace.
