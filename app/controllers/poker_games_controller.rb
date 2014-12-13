@@ -1,8 +1,8 @@
 class PokerGamesController < ApplicationController
   before_action :need_profile_completed, only: [:new]
   def index
-    @pokergames = PokerGame.all.paginate(page: params[:page], per_page: 2)
-
+     @pokergames = PokerGame.all.paginate(page: params[:page], per_page: 2)
+    # @pokergames_near = PokerGame.all.near
   end
 
   def show
