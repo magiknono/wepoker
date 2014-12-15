@@ -1,5 +1,7 @@
 class PokerGame < ActiveRecord::Base
   belongs_to :user
+  has_many :game_participations
+  has_many :users, through :game_participations
 
   geocoded_by :address, latitude: :lat, longitude: :lng
   after_validation :geocode
