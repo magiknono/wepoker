@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :poker_games
   has_many :game_participations
-  # has_many :poker_games, through :game_participations
+  has_many :poker_games, through: :game_participations
+
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100#", navbar: '40x40#' }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
