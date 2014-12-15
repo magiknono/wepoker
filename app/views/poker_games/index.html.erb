@@ -57,37 +57,34 @@ google.maps.event.addDomListener(window, 'load', function() {
   <INPUT id="refresh" TYPE="submit" VALUE=" rechercher ">
 </form>
 </div>
-<% if params[:q] != nil %>
- <h3>Pokergames listing</h3>
- <% @pokerg = PokerGame.all.near(params[:q],params[:km]).paginate(page: params[:page], per_page: 2) %>
-<% @pokerg.each do |mypgames| %>
+</div>
+</div>
 
-<div class="user-form-devise">
 
-  <%= link_to(poker_game_path(mypgames.id)) do %>
-  <h2><%= mypgames.description %></h2>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+<h3>Pokergames listing</h3>
+
+
+  <% if params[:q] != nil %>
+  <% @pokerg = PokerGame.all.near(params[:q],params[:km]).paginate(page: params[:page], per_page: 2) %>
+    <% @pokerg.each do |mypgames| %>
+    <div class="user-form-devise">
+    <%= link_to(poker_game_path(mypgames.id)) do %>
+    <h2><%= mypgames.description %></h2>
+    <% end %>
+     le <%= mypgames.date.strftime("%d/%m/%Y") %> à <%= mypgames.hour.strftime("%H:%M") %>
+    <p><%= mypgames.gametype %></p>
+
+
+
+</div>
   <% end %>
-   le <%= mypgames.date.strftime("%d/%m/%Y") %> à <%= mypgames.hour.strftime("%H:%M") %>
-  <p><%= mypgames.gametype %></p>
-
-
-
-    </div>
-  </div>
-<% end %>
 <%= will_paginate @pokerg %>
 <% end %>
 
+    </div>
   </div>
 </div>
 
-<%= content_for(:pokergames_change_index) do %>
-<%= javascript_tag do %>
-$( document ).ready(function() {
-    $("#user_input_autocomplete_address").on("focusout",function() {
-    $("#refresh").trigger("click");
-});
-});
-
-<% end %>
-<% end %>
