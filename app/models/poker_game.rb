@@ -8,5 +8,4 @@ class PokerGame < ActiveRecord::Base
     "#{self.street_address} #{self.zipcode_address} #{self.city_address}"
   end
 
-
 end

@@ -1,8 +1,13 @@
 class PokerGamesController < ApplicationController
   before_action :need_profile_completed, only: [:new]
   def index
-     @pokergames = PokerGame.all.paginate(page: params[:page], per_page: 2)
+    # @pokergames = PokerGame.all.paginate(page: params[:page], per_page: 2)
+    @pokergames = PokerGame.all
+    @pokergames = @pokergames.near(params[:q],params[:km]) if params[:q]
+    @pokergames = @pokergames.paginate(page: params[:page], per_page: 2)
     # @pokergames_near = PokerGame.all.near
+    return render partial: 'list_games', locals: {pokergames: @pokergames} if request.xhr?
+
   end
 
   def show
