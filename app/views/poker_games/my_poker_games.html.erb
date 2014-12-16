@@ -16,10 +16,12 @@
 
   </div>
 <% end %>
-Vous avez fait <%= current_user.participate_poker_games.count %> demandes pour rejoindre des parties
+<br />
+<strong>Vous avez fait <%= current_user.participate_poker_games.count %> demandes pour rejoindre des parties :</strong><br />
 <br />
 <% current_user.participate_poker_games.each do |game| %>
-Vos demandes en attente ont été faites à pour la partie <%= game.description %> créée par <%= game.creator.name %>
+ <%= link_to poker_game_path(game.id) do %><%= game.description %><% end %> créée par <%= game.creator.name %>
+<hr />
 <% end %>
 <br />
 Vous avez été accepté à <%= current_user.accepted_poker_games.count %> parties
