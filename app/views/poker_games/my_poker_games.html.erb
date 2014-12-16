@@ -20,14 +20,20 @@
 <strong>Vous avez fait <%= current_user.participate_poker_games.count %> demandes pour rejoindre des parties :</strong><br />
 <br />
 <% current_user.participate_poker_games.each do |game| %>
- <%= link_to poker_game_path(game.id) do %><%= game.description %><% end %> créée par <%= game.creator.name %>
+ <%= link_to poker_game_path(game.id) do %><%= game.description %><% end %> créée par <%= link_to user_path(game.creator.id) do %><%= game.creator.name %><% end %>
 <hr />
 <% end %>
 <br />
-Vous avez été accepté à <%= current_user.accepted_poker_games.count %> parties
+
+
+
+
+<br />
+<strong>Vous avez été accepté à <%= current_user.accepted_poker_games.count %> parties : </strong>
 <br />
 <% current_user.accepted_poker_games.each do |game| %>
 Vous avez été accepté à: <%= game.description %> créée par <%= game.creator.name %>
+<hr />
 <% end %>
 
 
