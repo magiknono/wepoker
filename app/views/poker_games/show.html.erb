@@ -46,10 +46,36 @@
         <%=  image_tag @pokergame.user.picture(:medium) if @pokergame.user.picture.exists? %>
         <% if @pokergame.user != current_user %>
         <br />
-        <button class="btn btn-primary">rejoindre la partie</button>
+
+        <%= button_to '', poker_game_game_participations_path(@pokergame), remote: true, class: "btn btn-primary #{@pokergame.participate?(current_user) ? 'active' : ''}", form_class: 'participate', data: {active: 'Partie rejointe', inactive: 'Rejoindre la partie'} %>
         <% end %>
       </div>
       </div>
 </div>
 </div>
 
+<%= content_for(:js) do %>
+  <script type="text/javascript">
+    $(document).on('ready', function() {
+
+      set_button_text = function($button) {
+
+        if ($button.hasClass('active')) {
+          $button.val($button.data('active'))
+        } else {
+          $button.val($button.data('inactive'))
+        }
+      }
+
+      $button = $('form.participate .btn')
+
+      set_button_text($button);
+
+      $('.participate').on('ajax:success', function(event, data) {
+
+        set_button_text($button);
+      });
+
+    });
+  </script>
+<% end %>

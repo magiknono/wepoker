@@ -7,8 +7,12 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [ :facebook ]
 
   has_many :poker_games
+
+  has_many :participate_poker_games, through: :game_participations, source: :poker_game
+  has_many :accepted_game_participations, -> { where(is_accepted: true)}, class_name: 'GameParticipation'
   has_many :game_participations
-  has_many :poker_games, through: :game_participations
+  has_many :accepted_poker_games, through: :accepted_game_participations, source: :poker_game
+
 
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100#", navbar: '40x40#' }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/

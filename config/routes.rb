@@ -4,11 +4,10 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'about', to: 'home#about'
   resources :users, only: [:edit, :update, :show]
-  resources :poker_games, only: [:new,:create,:destroy,:index]
-  resources :poker_games, only: [:show] do
-
-      get 'confirm_add'
-
+  # resources :poker_games, only: [:new,:create,:destroy,:index]
+  resources :poker_games, only: [:new,:create,:destroy,:index, :show] do
+    get 'confirm_add'
+    resources :game_participations, only: [:create]
   end
   get 'my_poker_games', to: 'poker_games#my_poker_games'
 

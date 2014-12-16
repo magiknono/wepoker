@@ -41,11 +41,9 @@
 <%= content_for(:js) do %>
 <%= javascript_tag do %>
 function initializeAutocomplete(id) {
-  var element = document.getElementById(id);
-  if (element) {
-    var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
-    google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-  }
+
+  var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
+  google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
 
   $('select[name="km"]').on('change', function(e) {
     $(this).parents('form').submit();
@@ -79,8 +77,16 @@ function onPlaceChanged() {
   $input.parents('form').submit();
 }
 
-google.maps.event.addDomListener(window, 'load', function() {
-  initializeAutocomplete('user_input_autocomplete_address');
-});
+  var element = document.getElementById('user_input_autocomplete_address');
+  google.maps.event.addDomListener(window, 'load', function() {
+    if (element) {
+      initializeAutocomplete();
+    }
+  });
+  google.maps.event.addDomListener(document, 'page:load', function() {
+    if (element) {
+      initializeAutocomplete();
+    }
+  });
 <% end %>
 <% end %>
