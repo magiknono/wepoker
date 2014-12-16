@@ -7,4 +7,13 @@ class GameParticipationsController < ApplicationController
     })
     return render json: {status: 'OK', message: 'Successfully joined game', button_text: 'Liked'}
   end
+
+  def update
+
+  end
+
+  def accept
+
+  end
+
 end

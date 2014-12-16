@@ -1,11 +1,3 @@
- <script type="text/javascript"
-  src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<%= ENV["GOOGLE_API_KEY_CLIENT"] %>">
-</script>
-
-
-
-
-
  <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
@@ -40,53 +32,51 @@
 </div>
 <%= content_for(:js) do %>
 <%= javascript_tag do %>
-function initializeAutocomplete(id) {
-
-  var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
-  google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-
-  $('select[name="km"]').on('change', function(e) {
-    $(this).parents('form').submit();
-  });
-
-  $(document).on('ajax:success', function(e, data) {
-    $('#results').html(data);
-  });
 
 
-}
+  $(document).on('ready page:load', function(){
+    var $element = $('#user_input_autocomplete_address');
 
-function onPlaceChanged() {
-  var place = this.getPlace();
+    if ($element.length) {
+      initializeAutocomplete($element);
+    }
+    function initializeAutocomplete($element) {
 
-   console.log(place);  // Uncomment this line to view the full object returned by Google API.
+      var autocomplete = new google.maps.places.Autocomplete($element[0], { types: ['geocode'] });
+      google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
 
-  for (var i in place.address_components) {
-    var component = place.address_components[i];
-    for (var j in component.types) {  //  Some types are ["country", "political"]
-      var type_element = document.getElementById(component.types[j]);
-      if (type_element) {
-        type_element.value = component.long_name;
+      $('select[name="km"]').on('change', function(e) {
+        $(this).parents('form').submit();
+      });
+
+      $(document).on('ajax:success', function(e, data) {
+        $('#results').html(data);
+      });
+
+
+    }
+
+    function onPlaceChanged() {
+      var place = this.getPlace();
+
+       console.log(place);  // Uncomment this line to view the full object returned by Google API.
+
+      for (var i in place.address_components) {
+        var component = place.address_components[i];
+        for (var j in component.types) {  //  Some types are ["country", "political"]
+          var type_element = document.getElementById(component.types[j]);
+          if (type_element) {
+            type_element.value = component.long_name;
+          }
+        }
       }
-    }
-  }
 
-  $input = $('#user_input_autocomplete_address');
+      $input = $('#user_input_autocomplete_address');
 
-  $input.val(place.formatted_address);
-  $input.parents('form').submit();
-}
-
-  var element = document.getElementById('user_input_autocomplete_address');
-  google.maps.event.addDomListener(window, 'load', function() {
-    if (element) {
-      initializeAutocomplete();
+      $input.val(place.formatted_address);
+      $input.parents('form').submit();
     }
   });
-  google.maps.event.addDomListener(document, 'page:load', function() {
-    if (element) {
-      initializeAutocomplete();
-    }
-  });
+
 <% end %>
 <% end %>
