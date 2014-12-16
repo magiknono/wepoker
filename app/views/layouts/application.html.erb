@@ -8,6 +8,11 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= csrf_meta_tags %>
+
+  <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<%= ENV["GOOGLE_API_KEY_CLIENT"] %>">
+  </script>
+
 </head>
 <body>
 
@@ -21,10 +26,10 @@
 
 <%= yield %>
 
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<%= yield(:cancel) %>
-<%= yield(:js) %>
 
 
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= yield(:cancel) %>
+  <%= yield(:js) %>
 </body>
 </html>
