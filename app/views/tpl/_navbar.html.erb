@@ -49,6 +49,15 @@
               <% end %>
             </li>
             </li>
+            <% if GameParticipation.exists?(user_id: current_user.id) %>
+               <li>
+
+              <%= link_to my_poker_games_path do %>
+              <i class="fa fa-check-square"></i> My PokerGames
+              <% end %>
+
+            </li>
+            <% end %>
               <% if PokerGame.exists?(user_id: current_user.id) %>
             <li>
 
