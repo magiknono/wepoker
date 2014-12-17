@@ -7,7 +7,8 @@ class GameParticipationsController < ApplicationController
     })
   end
 
-  def update
+  def decline
+
 
   end
 
