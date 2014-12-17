@@ -5,7 +5,6 @@ class GameParticipationsController < ApplicationController
       poker_game: @pokergame,
       answered_at: DateTime.now
     })
-    return render json: {status: 'OK', message: 'Successfully joined game', button_text: 'Liked'}
   end
 
   def update
