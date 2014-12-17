@@ -45,34 +45,16 @@
           <% end %>
         <%=  image_tag @pokergame.user.picture(:medium) if @pokergame.user.picture.exists? %>
         <% if @pokergame.user != current_user %>
-        <br />
-
-        <%= button_to '', poker_game_game_participations_path(@pokergame), remote: true, class: "btn btn-primary #{@pokergame.participate?(current_user) ? 'active' : ''}", form_class: 'participate', data: {active: 'Partie rejointe', inactive: 'Rejoindre la partie'} %>
+          <br />
+          <% if @pokergame.participate?(current_user) %>
+          <p>Vous avez déja rejoint la partie</p>
+          <% else %>
+          <div class="participate">
+          <%= link_to 'Rejoindre', poker_game_game_participations_path(@pokergame), method: 'post', remote: true, class: "btn btn-primary" %>
+          <% end %>
+          </div>
         <% end %>
       </div>
       </div>
 </div>
 </div>
-<%= content_for(:js) do %>
-  <%= javascript_tag do %>
-    $(document).on('ready page:load', function() {
-
-      set_button_text = function($button) {
-
-        if ($button.hasClass('active')) {
-          $button.val($button.data('active'))
-        } else {
-          $button.val($button.data('inactive'))
-        }
-      }
-
-      $button = $('form.participate .btn')
-
-      set_button_text($button);
-          $('.participate').on('ajax:success', function(event, data) {
-
-              $button.val("partie rejointe");
-            });
-      });
-  <% end %>
-<% end %>
