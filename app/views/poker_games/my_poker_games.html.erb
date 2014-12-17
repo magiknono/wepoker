@@ -8,14 +8,23 @@
   <h2><%= mypgames.description %></h2>
   <% end %>
    le <%= mypgames.date.strftime("%d/%m/%Y") %> à <%= mypgames.hour.strftime("%H:%M") %>
-  <p><%= mypgames.gametype %></p>
+  <p><%=  mypgames.gametype %></p>
 
 
-
+<% @selected = mypgames.game_participations.all %>
+<% @selected.where("answered_at is not null").each do |s| %>
+<p style="color:red;"> <%= s.user.name %> a demandé de rejoindre votre partie</p><h4>Accepter | Refuser</h4>
+<% end %>
 
 
   </div>
 <% end %>
+<br />
+
+
+
+
+
 <br />
 <strong>Vous avez fait <%= current_user.participate_poker_games.count %> demandes pour rejoindre des parties :</strong><br />
 <br />
