@@ -7,13 +7,16 @@ class GameParticipationsController < ApplicationController
     })
   end
 
-  def decline
-
+  def update
+    @pokergame = PokerGame.find(params[:poker_game_id])
+    @gameparticipation_id = GameParticipation.find(params[:id])
+    @game_participation = @gameparticipation_id.update({
+      poker_game: @pokergame,
+      is_accepted: true
+      })
 
   end
 
-  def accept
 
-  end
 
 end

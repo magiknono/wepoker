@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # resources :poker_games, only: [:new,:create,:destroy,:index]
   resources :poker_games, only: [:new,:create,:destroy,:index, :show] do
     get 'confirm_add'
-    resources :game_participations, only: [:create]
+    resources :game_participations, only: [:create,:update]
   end
   get 'my_poker_games', to: 'poker_games#my_poker_games'
 
