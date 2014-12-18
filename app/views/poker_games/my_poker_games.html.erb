@@ -32,12 +32,16 @@
 
 
     <% end %>
-  <div class="reactonclick">
+  <div class="reactonclick1">
     <% @selected.where(is_accepted: true).each do |mst| %>
      <p><span style="color:green;"><%= link_to user_path(mst.user.id) do %><%= mst.user.name %><% end %></span> est validé pour la partie</p>
     <% end %>
   </div>
-
+  <div class="reactonclick2">
+    <% @selected.where(is_accepted: false).each do |mst| %>
+     <p><span style="color:green;"><%= link_to user_path(mst.user.id) do %><%= mst.user.name %><% end %></span> est refusé de la partie</p>
+    <% end %>
+  </div>
   </div>
 <% end %>
 <br />
@@ -47,7 +51,7 @@
 
 <h3>Vos demandes</h3>
 <br />
-<strong>Vous avez fait <%= current_user.participate_poker_games.count %> demandes pour rejoindre des parties :</strong><br />
+<strong>Vous avez <%= current_user.participate_poker_games.where("is_accepted is null").count %> demandes en cours pour rejoindre des parties :</strong><br />
 <br />
 <% current_user.participate_poker_games.where("is_accepted is null").each do |game| %>
  <%= link_to poker_game_path(game.id) do %><%= game.description %><% end %> créée par <%= link_to user_path(game.creator.id) do %><%= game.creator.name %><% end %>
