@@ -1,5 +1,5 @@
 class PokerGamesController < ApplicationController
-  before_action :need_profile_completed, only: [:new]
+  before_action :need_profile_completed, only: [:new, :my_poker_games]
   def index
     # @pokergames = PokerGame.all.paginate(page: params[:page], per_page: 2)
     @pokergames = PokerGame.all_but(current_user)
@@ -47,7 +47,7 @@ class PokerGamesController < ApplicationController
 
   def need_profile_completed
     @user = User.find(current_user.id)
-     if (@user.birthday || @user.phone || @user.phone) == nil
+     if (@user.birthday || @user.phone || @user.name) == nil
       redirect_to edit_user_path(current_user.id)
      end
   end
