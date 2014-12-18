@@ -56,11 +56,23 @@
           </div>
         <% end %>
         <br />
+        <div class="user-form-devise">
           <%  required = @pokergame.nb_players_required %>
           <% p =  @pokergame %>
          <%  count = p.game_participations.where(is_accepted: true).count %>
-         Il reste <%= required - count %> places disponibles
+         Il reste <strong><%= required - count %></strong> places disponibles
+        </div>
         <br />
+        <% if p.game_participations.where("is_accepted is null") %>
+        <p>Aucun participants pour le moment</p>
+        <% else %>
+        <div class="user-form-devise">
+        <h4><strong>Participants confirmés</strong></h4>
+        <% p.users.each do |u| %>
+        <%= u.name %><br />
+        <% end %>
+        <% end %>
+        </div>
       </div>
       </div>
 </div>
