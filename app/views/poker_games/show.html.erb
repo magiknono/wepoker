@@ -44,6 +44,7 @@
           <h3> <%= @pokergame.user.name %></h3>
           <% end %>
         <%=  image_tag @pokergame.user.picture(:medium) if @pokergame.user.picture.exists? %>
+
         <% if @pokergame.user != current_user %>
           <br />
           <% if @pokergame.participate?(current_user) %>
@@ -54,6 +55,12 @@
           <% end %>
           </div>
         <% end %>
+        <br />
+          <%  required = @pokergame.nb_players_required %>
+          <% p =  @pokergame %>
+         <%  count = p.game_participations.where(is_accepted: true).count %>
+         Il reste <%= required - count %> places disponibles
+        <br />
       </div>
       </div>
 </div>
