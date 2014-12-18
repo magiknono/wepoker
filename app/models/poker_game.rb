@@ -8,6 +8,11 @@ class PokerGame < ActiveRecord::Base
   geocoded_by :address, latitude: :lat, longitude: :lng
   after_validation :geocode
 
+  def self.all_but(user)
+    where("user_id <> #{user.id}")
+  end
+
+
   def address
     "#{self.street_address} #{self.zipcode_address} #{self.city_address}"
   end
