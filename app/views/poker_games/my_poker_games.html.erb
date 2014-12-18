@@ -17,10 +17,12 @@
         <% @selected.where("is_accepted is null").each do |s| %>
 
 
-      <div class="accept" id="<%= "game_participation_#{s.id}" %>">
+      <div class="accepted_or_not" id="<%= "game_participation_#{s.id}" %>">
         <p style="color:red;"> <%= s.user.name  %> a demandé de rejoindre votre partie</p>
 
-          <%= link_to 'Accepter', poker_game_game_participation_path(s.poker_game.id,s.id), method: 'patch', remote: true, class: "btn btn-primary" %>
+          <%= link_to 'Accepter', poker_game_game_participation_path(s.poker_game.id,s.id,is_accepted: true), method: 'patch', remote: true, class: "btn btn-primary" %>
+
+        <%= link_to 'Refuser', poker_game_game_participation_path(s.poker_game.id,s.id,is_accepted: false), method: 'patch', remote: true, class: "btn btn-danger" %>
         </div>
 
 
@@ -30,11 +32,11 @@
 
 
     <% end %>
-
+  <div class="reactonclick">
     <% @selected.where(is_accepted: true).each do |mst| %>
-     <p><span style="color:green;"> <%= mst.user.name %></span> est validé pour la partie</p>
+     <p><span style="color:green;"><%= link_to user_path(mst.user.id) do %><%= mst.user.name %><% end %></span> est validé pour la partie</p>
     <% end %>
-
+  </div>
 
   </div>
 <% end %>
@@ -47,7 +49,7 @@
 <br />
 <strong>Vous avez fait <%= current_user.participate_poker_games.count %> demandes pour rejoindre des parties :</strong><br />
 <br />
-<% current_user.participate_poker_games.each do |game| %>
+<% current_user.participate_poker_games.where("is_accepted is null").each do |game| %>
  <%= link_to poker_game_path(game.id) do %><%= game.description %><% end %> créée par <%= link_to user_path(game.creator.id) do %><%= game.creator.name %><% end %>
 <hr />
 <% end %>
@@ -60,10 +62,13 @@
 <strong>Vous avez été accepté à <%= current_user.accepted_poker_games.count %> parties : </strong>
 <br />
 <% current_user.accepted_poker_games.each do |game| %>
-Vous avez été accepté à: <%= game.description %> créée par <%= game.creator.name %>
+<%= link_to poker_game_path(game.id) do %><%= game.description %><% end %> créée par <%= link_to user_path(game.creator.id) do %><%= game.creator.name %><% end %>
 <hr />
 <% end %>
 <br />
+
+
+
 
 
 
