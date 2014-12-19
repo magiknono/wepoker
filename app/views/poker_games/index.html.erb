@@ -51,6 +51,15 @@
 
       $(document).on('ajax:success', function(e, data) {
         $('#results').html(data);
+
+      handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+
+
       });
 
 
