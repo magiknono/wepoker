@@ -8,6 +8,11 @@ class PokerGamesController < ApplicationController
     # @pokergames_near = PokerGame.all.near
     return render partial: 'list_games', locals: {pokergames: @pokergames} if request.xhr?
 
+    @markers = Gmaps4rails.build_markers(@pokergames) do |pokergame,marker|
+      marker.lat pokergame.lat
+      marker.lng pokergame.lng
+    end
+
   end
 
   def show
