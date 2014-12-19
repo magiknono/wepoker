@@ -11,6 +11,7 @@ class PokerGamesController < ApplicationController
     @markers = Gmaps4rails.build_markers(@pokergames) do |pokergame,marker|
       marker.lat pokergame.lat
       marker.lng pokergame.lng
+      marker.infowindow render_to_string(partial: "infowindow", locals: { pokergame: pokergame })
     end
 
   end
