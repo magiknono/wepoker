@@ -1,11 +1,12 @@
-<div class="col-md-10 col-md-offset-1">
-  <h3>Pokergames listing</h3>
+
+<div class="col-md-6 col-md-offset-1">
+
 
 
   <% pokergames.each do |pokergame| %>
   <div class="user-form-devise">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-7">
     <%= link_to(poker_game_path(pokergame.id)) do %>
     <h2><%= pokergame.description %></h2>
     <% end %>
@@ -13,9 +14,9 @@
 
     <p><%= pokergame.city_address %></p>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-4 pull-right">
         <br />
-    <p><%= link_to user_path(pokergame.creator.id) do %><%= pokergame.creator.name %><% end %><%= image_tag(pokergame.creator.picture(:navbar)) %></p>
+    <p><%= link_to user_path(pokergame.creator.id) do %><%= pokergame.creator.name %><% end %><br /><%= image_tag(pokergame.creator.picture(:navbar)) %></p>
     <br />
     <p><%= pokergame.gametype %></p>
   </div>
@@ -28,3 +29,23 @@
   <%= paginate pokergames %>
 
 </div>
+
+
+<div class="col-md-4">
+<div class="user-form-devise">
+<div id="map" style="width: 300px; height: 300px;"></div>
+
+</div>
+</div>
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(document).on('ready', function() {
+      handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    })
+  <% end %>
+<% end %>
