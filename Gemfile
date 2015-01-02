@@ -13,6 +13,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "meta_request"
+  gem 'web-console', '~> 2.0'
 end
 ruby '2.2.0'
 gem 'rails_12factor', group: :production
@@ -25,7 +26,7 @@ gem "rails-assets-underscore"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 gem 'responders', '~> 2.0'
-gem 'web-console', '~> 2.0'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
