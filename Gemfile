@@ -14,7 +14,7 @@ group :development do
   gem "binding_of_caller"
   gem "meta_request"
 end
-ruby '2.1.2'
+ruby '2.2.0'
 gem 'rails_12factor', group: :production
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'momentjs-rails'
@@ -23,7 +23,9 @@ gem 'will_paginate', '~> 3.0.6'
 gem "gmaps4rails"
 gem "rails-assets-underscore"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.0'
+gem 'responders', '~> 2.0'
+gem 'web-console', '~> 2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
