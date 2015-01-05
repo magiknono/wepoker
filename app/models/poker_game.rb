@@ -10,7 +10,7 @@ class PokerGame < ActiveRecord::Base
   after_validation :geocode
 
   def self.all_but(user)
-    where("user_id <> #{user.id}")
+    where("user_id <> #{user.id} and date > now()")
   end
 
 
