@@ -54,7 +54,10 @@
           <%= link_to 'Rejoindre', poker_game_game_participations_path(@pokergame), method: 'post', remote: true, class: "btn btn-primary" %>
           <% end %>
           </div>
+
         <% end %>
+
+
         <br />
         <div class="user-form-devise">
           <%  required = @pokergame.nb_players_required %>
@@ -63,15 +66,20 @@
          Il reste <strong><%= required - count %></strong> places disponibles
         </div>
         <br />
-        <% if p.game_participations.where("is_accepted is null") %>
-        <p>Aucun participants pour le moment</p>
+        <% if p.game_participations.where(is_accepted: true).exists? %>
+           <div class="user-form-devise">
+          <h4>Participants confirmés</h4>
+          <% p.users.each do |u| %>
+          <%= image_tag u.picture(:navbar) if u.picture.exists? %>
+            <%= link_to user_path(u.id) do %>
+            <%= u.name %><br />
+            <% end %>
+          <% end %>
+
         <% else %>
-        <div class="user-form-devise">
-        <h4><strong>Participants confirmés</strong></h4>
-        <% p.users.each do |u| %>
-        <%= u.name %><br />
-        <% end %>
-        <% end %>
+            <div class="user-form-devise">
+             <p>Aucun participants pour le moment</p>
+          <% end %>
         </div>
       </div>
       </div>
