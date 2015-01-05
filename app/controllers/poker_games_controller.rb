@@ -37,7 +37,7 @@ class PokerGamesController < ApplicationController
   end
 
   def my_poker_games
-    @my_poker_games = current_user.poker_games.all.order("date desc").order("hour desc")
+    @my_poker_games = current_user.poker_games.all.order("date desc").order("hour desc").paginate(page: params[:page], per_page: 2)
   end
 
   def destroy
