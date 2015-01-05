@@ -52,12 +52,13 @@
           <% else %>
           <div class="participate">
           <%= link_to 'Rejoindre', poker_game_game_participations_path(@pokergame), method: 'post', remote: true, class: "btn btn-primary" %>
-          <% end %>
           </div>
+          <% end %>
+
 
         <% end %>
 
-
+        </div>
         <br />
         <div class="user-form-devise">
           <%  required = @pokergame.nb_players_required %>
