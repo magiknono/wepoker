@@ -10,6 +10,10 @@
     <%= link_to(poker_game_path(pokergame.id)) do %>
     <h2><%= pokergame.description %></h2>
     <% end %>
+    <%  p = pokergame.date.strftime("%d/%m/%Y") %> à <%= h=pokergame.hour.strftime("%H:%M") %>
+    <% if DateTime.now.strftime("%d/%m/%Y %H:%M") > "#{p} #{h}" %>
+    <p>JUST CLOSED - PLUS D'INSCRIPTIONS</p>
+    <% end %>
     le <%= pokergame.date.strftime("%d/%m/%Y") %> à <%= pokergame.hour.strftime("%H:%M") %>
 
     <p><%= pokergame.city_address %></p>
@@ -19,6 +23,7 @@
     <p><%= link_to user_path(pokergame.creator.id) do %><%= pokergame.creator.name %><% end %><br /><%= image_tag(pokergame.creator.picture(:navbar)) %></p>
     <br />
     <p><%= pokergame.gametype %></p>
+
   </div>
   </div>
 
