@@ -3,7 +3,14 @@
 
       <h3>Vos parties </h3>
 <% @my_poker_games.each do |mypgames| %>
+
+<%  p = mypgames.date.strftime("%d/%m/%Y") %>  <% h =  mypgames.hour.strftime("%H:%M") %>
 <div class="user-form-devise">
+
+    <% if DateTime.now.strftime("%d/%m/%Y %H:%M") > "#{p} #{h}" %>
+
+  <p>PARTIE TERMINEE</p>
+  <% end %>
   <%= link_to(poker_game_path(mypgames.id)) do %>
   <h2><%= mypgames.description %></h2>
   <% end %>
