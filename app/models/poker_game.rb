@@ -12,9 +12,9 @@ class PokerGame < ActiveRecord::Base
 
   def self.all_but(user)
     d = DateTime.now
-    @thedate= "#{d.year}-#{d.month}-#{d.day}"
-    @thehour = "#{d.hour}:#{d.min}:#{d.sec}"
-    where("user_id <> #{user.id} and date >= ? and hour >= ?", @thedate, @thehour)
+    @thenowdate= "#{d.year}-#{d.month}-#{d.day}"
+
+    where("user_id <> #{user.id} and date >= ?", @thenowdate).order("date desc").order("hour desc")
   end
 
 
