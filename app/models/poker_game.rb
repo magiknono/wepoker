@@ -4,6 +4,7 @@ class PokerGame < ActiveRecord::Base
   alias_method :user, :creator
   has_many :game_participations
   has_many :users, through: :game_participations
+  validates_presence_of :gametype, :date, :hour, :description, :nb_players_required, :street_address, :zipcode_address, :city_address
 
   geocoded_by :address, latitude: :lat, longitude: :lng
   after_validation :geocode
