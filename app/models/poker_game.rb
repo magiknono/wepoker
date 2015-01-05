@@ -1,4 +1,5 @@
 class PokerGame < ActiveRecord::Base
+  require 'date'
   belongs_to :creator, foreign_key: 'user_id', class_name: 'User'
   # @Depreciated @pokergame.user use @pokergame.creator instead
   alias_method :user, :creator
@@ -10,7 +11,10 @@ class PokerGame < ActiveRecord::Base
   after_validation :geocode
 
   def self.all_but(user)
-    where("user_id <> #{user.id} and date > now()")
+    d = DateTime.now
+    @thedate= "#{d.year}-#{d.month}-#{d.day}"
+    @thehour = "#{d.hour}:#{d.min}:#{d.sec}"
+    where("user_id <> #{user.id} and date >= ? and hour >= ?", @thedate, @thehour)
   end
 
 
