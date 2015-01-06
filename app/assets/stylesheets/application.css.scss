@@ -8,6 +8,23 @@ $font-family-base: 'Lato', sans-serif;
 @import "bootstrap-datetimepicker";
 @import "navbar";
 
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -90px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+#footer {
+  height: 90px;
+  background-color: #f5f5f5;
+}
 
 .vertical-spacer-top {
   margin-top:70px;
@@ -51,3 +68,8 @@ $font-family-base: 'Lato', sans-serif;
     border-bottom-left-radius:5px;
     border-bottom-right-radius:5px;
   }
+.lead {
+  width:700px;
+  height:90px;
+
+}
