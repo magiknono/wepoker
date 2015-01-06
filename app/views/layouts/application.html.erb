@@ -16,6 +16,8 @@
 </head>
 <body>
 
+<!-- STARTING WRAP --><div id="wrap">
+
 <%= render 'tpl/navbar' %>
 <%= render 'tpl/fb_sdk' %>
 
@@ -26,8 +28,12 @@
 
 <%= yield %>
 
+<!-- ENDING WRAP AND PUSH FOOTER AT THE BOTTOM --></div>
+<div id="footer">
 
+        <p><center><a href="http://www.wepoker.co">WePoker.co</a> </center></p>
 
+</div>
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
   <%= javascript_include_tag 'application' %>
   <%= yield(:cancel) %>
