@@ -41,11 +41,11 @@
             <li>
 
               <%= link_to edit_user_path(current_user) do %>
-              <i class="fa fa-user"></i> Edit Profile
+              <i class="fa fa-user"></i> Editer mon Profile
               <% end %>
             <li>
               <%= link_to poker_games_path do %>
-              <i class="fa fa-list-ul"></i> List Pokergames
+              <i class="fa fa-list-ul"></i> Explorer les parties de poker
               <% end %>
             </li>
             </li>
@@ -53,7 +53,7 @@
                <li>
 
               <%= link_to my_poker_games_path do %>
-              <i class="fa fa-check-square"></i> My PokerGames
+              <i class="fa fa-check-square"></i> Mes parties de poker
               <% end %>
 
             </li>
@@ -61,26 +61,26 @@
 
             <li>
               <%= link_to new_poker_game_path do %>
-              <i class="fa fa-plus-square"></i> Create a Poker game NOW!
+              <i class="fa fa-plus-square"></i> Créér une partie de poker
               <% end %>
             </li>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: 'delete' do %>
-                <i class="fa fa-sign-out"></i> Sign out
+                <i class="fa fa-sign-out"></i> Se déconnecter
               <% end %>
             </li>
           </ul>
         </li>
         <% else %>
             <li>
-              <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), class: "btn-auth btn-facebook" %>
+              <%= link_to "Se connecter avec facebook", user_omniauth_authorize_path(:facebook), class: "btn-auth btn-facebook" %>
             </li>
             <li>
-             <%= link_to 'Sign up', new_user_registration_path %>
+             <%= link_to "S'inscrire", new_user_registration_path %>
             </li>
             <li>
-             <%= link_to 'Sign in', new_user_session_path %>
+             <%= link_to 'Se connecter', new_user_session_path %>
              </li>
         <% end %>
         <% if user_signed_in? %>
